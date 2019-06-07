@@ -15,12 +15,14 @@ TEST_PERCENTAGE = 0.1
 SRC_IMG_DIRS = ["./p1 (copy)/", "./p2 (copy)/", "./p3 (copy)/"] ## Source directory of the images
 SRC_LBLS_DIRS = ["./p1_l (copy)/", "./p2_l (copy)/", "./p3_l (copy)/"] ## Source directory of the labels
 
-## SET EXTENSIONS
-LBS_EXTENSION = ".csv" ## Extension of the renamed lbls
-
 ## SET NOMENCLATURE
 FILE_NAME = "frame" ## Generic name for the files
 ZEROS = 8 ## Amount of zeros to fill the generic name: ex. ZEROS = 4 -> 0023
+
+
+## ****************************************************************************************************************
+## ****************************************************************************************************************
+
 
 ## DEFINE PATHS
 DST_IMAGES = DST_FOLDER_NAME + '/images/'
@@ -33,6 +35,9 @@ DST_IMAGES_TEST = DST_IMAGES + 'test/'
 DST_LABELS_TRAIN = DST_LABELS + 'train/'
 DST_LABELS_VAL = DST_LABELS + 'val/'
 DST_LABELS_TEST = DST_LABELS + 'test/'
+
+## DEFINE EXTENSIONS
+LBS_EXTENSION = ".csv" ## Extension of the renamed lbls
 
 
 def main():
@@ -116,9 +121,6 @@ def main():
             img_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + IMG_EXTENSION
             label_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + LBS_EXTENSION
 
-            ## INFO MSG
-            print("MOVING " + img_file + " from " + SRC_DIR + " to " + DST_IMAGES_VAL + " as " + img_file_rename)
-
             ## SET NAMES
             old_file = os.path.join(SRC_DIR, img_file)
             new_file = os.path.join(DST_IMAGES_VAL, img_file_rename)
@@ -130,9 +132,6 @@ def main():
             ## CONVERT LABEL TO CSV FORMAT
             convert_label_file(new_file, SRC_LBLS_DIRS[merged_folders]+label_file,
              os.path.join(DST_LABELS_VAL, label_file_rename))
-            
-            ## INFO MSG
-            print("CONVERTED " + label_file + " TO " + label_file_rename )
 
             count += 1
 
@@ -154,9 +153,6 @@ def main():
             img_file_rename = FILE_NAME + str(count + num_test_files).zfill(ZEROS) + IMG_EXTENSION
             label_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + LBS_EXTENSION
 
-            ## INFO MSG
-            print("MOVING " + img_file + " from " + SRC_DIR + " to " + DST_IMAGES_VAL + " as " + img_file_rename)
-
             ## SET NAMES
             old_file = os.path.join(SRC_DIR, img_file)
             new_file = os.path.join(DST_IMAGES_TEST, img_file_rename)
@@ -168,9 +164,6 @@ def main():
             convert_label_file(new_file, SRC_LBLS_DIRS[merged_folders]+label_file,
              os.path.join(DST_LABELS_TEST, label_file_rename))
 
-            ## INFO MSG
-            print("CONVERTED " + label_file + " TO " + label_file_rename )
-
             count += 1
             
         ## GET TRAIN FILES
@@ -180,9 +173,6 @@ def main():
 
         count = 0
         for img_file in src_images:
-
-            ## INFO MSG
-            print("MOVING " + img_file + " from " + SRC_DIR + " to " + DST_IMAGES_TEST + " as " + img_file_rename)
 
             ## NEW FILE NAMES
             img_file_rename = FILE_NAME + str(count + num_train_files).zfill(ZEROS) + IMG_EXTENSION
@@ -198,17 +188,10 @@ def main():
             ## CONVERT LABEL TO CSV FORMAT
             convert_label_file(new_file, SRC_LBLS_DIRS[merged_folders]+label_file,
              os.path.join(DST_LABELS_TRAIN, label_file_rename))
-            
-            ## INFO MSG
-            print("CONVERTED " + label_file + " TO " + label_file_rename )
 
             count += 1
 
         merged_folders += 1
-
-        ## INFO MSG
-        print("MERGING " + SRC_DIR + " DONE !!!")
-        print("***************************************")
 
     ## CREATE TRAIN CSV
     merge_csv(DST_IMAGES, DST_LABELS, "train")
@@ -218,6 +201,8 @@ def main():
 
     ## CREATE TEST CSV
     merge_csv(DST_IMAGES, DST_LABELS, "test")
+
+    ## TODO: Convert csvs to tfrecords
 
 
     final_train_imgs = len(os.listdir(DST_IMAGES_TRAIN))
