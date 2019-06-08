@@ -2,7 +2,8 @@ import os, os.path, sys
 from math import trunc
 import random
 from utils.convert_label_file import convert_label_file
-from utils.utils import merge_csv
+from utils.utils import merge_csv, load_label_map
+import glob
 
 ## SET DATASET'S FOLDER NAME
 PATH_TO_DST_DATASET_FOLDER = "../"
@@ -13,6 +14,7 @@ VAL_PERCENTAGE = 0.1
 TEST_PERCENTAGE = 0.1
 
 ## SET FOLDERS TO BE MERGED
+# END directories with '/'
 SRC_IMG_DIRS = ["../p1 (copy)/", "../p2 (copy)/", "../p3 (copy)/"] ## Source directory of the images
 SRC_LBLS_DIRS = ["../p1_l (copy)/", "../p2_l (copy)/", "../p3_l (copy)/"] ## Source directory of the labels
 
@@ -20,6 +22,12 @@ SRC_LBLS_DIRS = ["../p1_l (copy)/", "../p2_l (copy)/", "../p3_l (copy)/"] ## Sou
 FILE_NAME = "frame" ## Generic name for the files
 ZEROS = 8 ## Amount of zeros to fill the generic name: ex. ZEROS = 4 -> 0023
 
+## SET KEY WORDS TO TRANSLATE LABELMAPS
+KEY_WORDS = [["yellow", "Yellow", "YELLOW"], ["blue", "Blue", "BLUE"],
+             ["orange", "Orange", "ORANGE"]]
+
+## SET REFERENCE LABEL MAP
+REF_LM = "../driverless_UPC_classes.txt"
 
 ## ****************************************************************************************************************
 ## ****************************************************************************************************************
@@ -108,6 +116,9 @@ def main():
         dst_val_files = os.listdir(DST_IMAGES_VAL)
         num_val_files = len(dst_val_files)
 
+        ## LOAD LABEL MAP
+        lm_list = load_label_map(glob.glob(SRC_LBLS_DIRS[merged_folders]+ "label_map*")[0])
+
         count = 0
         while count < n_val:
             ## CHOOSE RANDOM IMAGE
@@ -132,7 +143,7 @@ def main():
 
             ## CONVERT LABEL TO CSV FORMAT
             convert_label_file(new_file, SRC_LBLS_DIRS[merged_folders]+label_file,
-             os.path.join(DST_LABELS_VAL, label_file_rename))
+             os.path.join(DST_LABELS_VAL, label_file_rename), REF_LM, lm_list, KEY_WORDS)
 
             count += 1
 
@@ -163,7 +174,7 @@ def main():
 
             ## CONVERT LABEL TO CSV FORMAT
             convert_label_file(new_file, SRC_LBLS_DIRS[merged_folders]+label_file,
-             os.path.join(DST_LABELS_TEST, label_file_rename))
+             os.path.join(DST_LABELS_TEST, label_file_rename), REF_LM, lm_list, KEY_WORDS)
 
             count += 1
             
@@ -188,7 +199,7 @@ def main():
 
             ## CONVERT LABEL TO CSV FORMAT
             convert_label_file(new_file, SRC_LBLS_DIRS[merged_folders]+label_file,
-             os.path.join(DST_LABELS_TRAIN, label_file_rename))
+             os.path.join(DST_LABELS_TRAIN, label_file_rename), REF_LM, lm_list, KEY_WORDS)
 
             count += 1
 

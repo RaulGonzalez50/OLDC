@@ -2,14 +2,14 @@ import csv
 import xml.etree.ElementTree as ET
 from utils.utils import translate_label_map
 
-def xml_2_csv(image_path, label_path, new_label_path):
+def xml_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_words):
+    print("------------------------------")
     in_file = open(label_path, 'r')
     out_file = open(new_label_path, 'w')
 
     tree = ET.parse(in_file)
     root = tree.getroot()
 
-    ## BUG: filename not well constructed
     s_path =image_path.split("/")
     filename = "./" + s_path[-3] + "/" + s_path[-2] + "/" + s_path[-1]
 
@@ -23,9 +23,7 @@ def xml_2_csv(image_path, label_path, new_label_path):
 
         ## CONVERT LABEL
         ## TODO: load_label_maps from arg
-        data_label_map = "a"
-        your_label_map = "b"
-        class_cone = translate_label_map(your_label_map, data_label_map, class_cone)
+        class_cone = translate_label_map(ref_lm, lm_list, class_cone, key_words)
 
         ## GET BB PTS
         if(obj.find('bndbox') != None):

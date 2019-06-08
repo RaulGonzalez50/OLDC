@@ -2,7 +2,8 @@ from PIL import Image
 import csv
 from utils.utils import translate_label_map
 
-def darknet_2_csv(image_path, label_path, new_label_path):
+def darknet_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_words):
+    print("------------------------------")
     ## GET IMG SHAPE
     im = Image.open(image_path)
     img_width, img_height = im.size
@@ -18,7 +19,6 @@ def darknet_2_csv(image_path, label_path, new_label_path):
         for line in f:
             label_data = line.split(' ')
 
-            ## BUG: filename not well constructed
             s_path =image_path.split("/")
             filename = "./" + s_path[-3] + "/" + s_path[-2] + "/" + s_path[-1]
 
@@ -26,9 +26,7 @@ def darknet_2_csv(image_path, label_path, new_label_path):
             height = int(float(label_data[3]) * img_height)
             ## CONVERT LABEL
             ## TODO: load_label_maps from arg
-            data_label_map = "a"
-            your_label_map = "b"
-            class_cone = translate_label_map(your_label_map, data_label_map, label_data[0])
+            class_cone = translate_label_map(ref_lm, lm_list, label_data[0], key_words)
             xmax = int(float(label_data[1]) * img_width + width/2)
             xmin = int(float(label_data[1]) * img_width - width/2)
             ymax = int(float(label_data[2]) * img_height + height/2)
@@ -37,8 +35,3 @@ def darknet_2_csv(image_path, label_path, new_label_path):
             writer.writerow({'filename': filename, 'width': width,
             'height': height, 'class': class_cone , 'xmax': xmax,
             'xmin': xmin, 'ymax': ymax, 'ymin':ymin})
-
-
-if __name__ == "__main__":
-    darknet_2_csv("../images_munich/amz_2019/400131.jpg",
-     "../labels_munich/amz/amz_2019/400131.txt", "")
