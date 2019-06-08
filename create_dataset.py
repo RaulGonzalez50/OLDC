@@ -15,8 +15,8 @@ TEST_PERCENTAGE = 0.1
 
 ## SET FOLDERS TO BE MERGED
 # END directories with '/'
-SRC_IMG_DIRS = ["../p1 (copy)/", "../p2 (copy)/", "../p3 (copy)/"] ## Source directory of the images
-SRC_LBLS_DIRS = ["../p1_l (copy)/", "../p2_l (copy)/", "../p3_l (copy)/"] ## Source directory of the labels
+SRC_IMG_DIRS = ["../p4 (copy)/"] ## Source directory of the images
+SRC_LBLS_DIRS = ["../p4_l (copy)/"] ## Source directory of the labels
 
 ## SET NOMENCLATURE
 FILE_NAME = "frame" ## Generic name for the files

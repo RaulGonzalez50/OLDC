@@ -44,15 +44,16 @@ def translate_label_map(ref_lm, data_label_map, label, key_words):
                         lm_val = int(label)
                         lm_name = data_label_map[lm_val]
                 except ValueError:
-                        lm_name = label        
+                        lm_name = label 
+    
                 for c in key_words:
                         for word in c:
                                 if word in lm_name:
                                         index = key_words.index(c)
                                         if index == 2:
-                                                if "big" in lm_name or "Big" in lm_name or "BIG" in lm_name:
+                                                if ("big" in lm_name or "Big" in lm_name or "BIG" in lm_name):
                                                         index += 1
-                                        return int(key_words.index(c))
+                                        return index
         else:
                 try:
                         lm_val = int(label)

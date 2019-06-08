@@ -24,9 +24,13 @@ def darknet_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_w
             width = int(float(label_data[4][:-2]) * img_width)
             height = int(float(label_data[3]) * img_height)
             
+            print(label_data[0])
             ## CONVERT LABEL
             class_cone = translate_label_map(ref_lm, lm_list, label_data[0], key_words)
-            
+
+            if class_cone is None:
+                continue
+
             xmax = int(float(label_data[1]) * img_width + width/2)
             xmin = int(float(label_data[1]) * img_width - width/2)
             ymax = int(float(label_data[2]) * img_height + height/2)
