@@ -3,7 +3,6 @@ import csv
 from utils.utils import translate_label_map
 
 def darknet_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_words):
-    print("------------------------------")
     ## GET IMG SHAPE
     im = Image.open(image_path)
     img_width, img_height = im.size
@@ -24,9 +23,10 @@ def darknet_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_w
 
             width = int(float(label_data[4][:-2]) * img_width)
             height = int(float(label_data[3]) * img_height)
+            
             ## CONVERT LABEL
-            ## TODO: load_label_maps from arg
             class_cone = translate_label_map(ref_lm, lm_list, label_data[0], key_words)
+            
             xmax = int(float(label_data[1]) * img_width + width/2)
             xmin = int(float(label_data[1]) * img_width - width/2)
             ymax = int(float(label_data[2]) * img_height + height/2)

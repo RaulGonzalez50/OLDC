@@ -3,7 +3,6 @@ import xml.etree.ElementTree as ET
 from utils.utils import translate_label_map
 
 def xml_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_words):
-    print("------------------------------")
     in_file = open(label_path, 'r')
     out_file = open(new_label_path, 'w')
 
@@ -22,7 +21,6 @@ def xml_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_words
         class_cone = obj.find('name').text
 
         ## CONVERT LABEL
-        ## TODO: load_label_maps from arg
         class_cone = translate_label_map(ref_lm, lm_list, class_cone, key_words)
 
         ## GET BB PTS

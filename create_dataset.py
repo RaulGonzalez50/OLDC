@@ -124,6 +124,7 @@ def main():
             ## CHOOSE RANDOM IMAGE
             img_file = random.choice(src_images)
             label_file = img_file[:-3]+labels_extension
+            print(label_file)
 
             ## REMOVE FILES FROM LISTS
             src_images.remove(img_file)
@@ -132,7 +133,7 @@ def main():
             ## NEW FILE NAMES
             img_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + IMG_EXTENSION
             label_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + LBS_EXTENSION
-
+            print(label_file_rename)
             ## SET NAMES
             old_file = os.path.join(SRC_DIR, img_file)
             new_file = os.path.join(DST_IMAGES_VAL, img_file_rename)
