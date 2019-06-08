@@ -5,6 +5,7 @@ from utils.convert_label_file import convert_label_file
 from utils.utils import merge_csv
 
 ## SET DATASET'S FOLDER NAME
+PATH_TO_DST_DATASET_FOLDER = "../"
 DST_FOLDER_NAME = "dataset_prova"
 
 ## SET PERCENTAGE OF DATA USED FOR TEST AND VALIDATION
@@ -12,8 +13,8 @@ VAL_PERCENTAGE = 0.1
 TEST_PERCENTAGE = 0.1
 
 ## SET FOLDERS TO BE MERGED
-SRC_IMG_DIRS = ["./p1 (copy)/", "./p2 (copy)/", "./p3 (copy)/"] ## Source directory of the images
-SRC_LBLS_DIRS = ["./p1_l (copy)/", "./p2_l (copy)/", "./p3_l (copy)/"] ## Source directory of the labels
+SRC_IMG_DIRS = ["../p1 (copy)/", "../p2 (copy)/", "../p3 (copy)/"] ## Source directory of the images
+SRC_LBLS_DIRS = ["../p1_l (copy)/", "../p2_l (copy)/", "../p3_l (copy)/"] ## Source directory of the labels
 
 ## SET NOMENCLATURE
 FILE_NAME = "frame" ## Generic name for the files
@@ -25,8 +26,8 @@ ZEROS = 8 ## Amount of zeros to fill the generic name: ex. ZEROS = 4 -> 0023
 
 
 ## DEFINE PATHS
-DST_IMAGES = DST_FOLDER_NAME + '/images/'
-DST_LABELS = DST_FOLDER_NAME + '/labels/'
+DST_IMAGES = PATH_TO_DST_DATASET_FOLDER + DST_FOLDER_NAME + '/images/'
+DST_LABELS = PATH_TO_DST_DATASET_FOLDER + DST_FOLDER_NAME + '/labels/'
 
 DST_IMAGES_TRAIN = DST_IMAGES + 'train/'
 DST_IMAGES_VAL = DST_IMAGES + 'val/'
@@ -52,8 +53,8 @@ def main():
         sys.exit("ENTER A VALID TEST & VAL PERCENTAGE VALUES -> VAL + TEST + TRAIN = 1")
 
     ## CHECK ALL FOLDERS ARE CREATED
-    if not os.path.exists("./"+DST_FOLDER_NAME):
-        os.makedirs("./"+DST_FOLDER_NAME)
+    if not os.path.exists(PATH_TO_DST_DATASET_FOLDER + DST_FOLDER_NAME):
+        os.makedirs(PATH_TO_DST_DATASET_FOLDER + DST_FOLDER_NAME)
 
     if not os.path.exists(DST_IMAGES):
         os.makedirs(DST_IMAGES)

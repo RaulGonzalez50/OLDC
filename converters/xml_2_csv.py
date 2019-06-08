@@ -1,21 +1,17 @@
 import csv
 import xml.etree.ElementTree as ET
+from utils.utils import translate_label_map
 
 def xml_2_csv(image_path, label_path, new_label_path):
-    print("converting xml ...")
-    print(image_path)
-    print(label_path)
     in_file = open(label_path, 'r')
     out_file = open(new_label_path, 'w')
 
     tree = ET.parse(in_file)
     root = tree.getroot()
-    size = root.find('size')
 
-    width = int(size.find('width').text)
-    height = int(size.find('height').text)
-
-    filename = "." + image_path[20:]
+    ## BUG: filename not well constructed
+    s_path =image_path.split("/")
+    filename = "./" + s_path[-3] + "/" + s_path[-2] + "/" + s_path[-1]
 
     fieldnames = ['filename', 'width', 'height', 'class', 
     'xmax', 'xmin', 'ymax', 'ymin']
@@ -25,8 +21,11 @@ def xml_2_csv(image_path, label_path, new_label_path):
     for obj in root.iter('object'):
         class_cone = obj.find('name').text
 
-        ## TODO: insert label conversion
-        class_cone = 0
+        ## CONVERT LABEL
+        ## TODO: load_label_maps from arg
+        data_label_map = "a"
+        your_label_map = "b"
+        class_cone = translate_label_map(your_label_map, data_label_map, class_cone)
 
         ## GET BB PTS
         if(obj.find('bndbox') != None):
@@ -47,6 +46,6 @@ def xml_2_csv(image_path, label_path, new_label_path):
             ymax = int(max(y_list))
 
         
-        writer.writerow({'filename': filename, 'width': width,
-            'height': height, 'class': class_cone , 'xmax': xmax,
+        writer.writerow({'filename': filename, 'width': xmax-xmin,
+            'height': ymax-ymin, 'class': class_cone , 'xmax': xmax,
             'xmin': xmin, 'ymax': ymax, 'ymin':ymin})

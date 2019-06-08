@@ -1,5 +1,6 @@
 from PIL import Image
 import csv
+from utils.utils import translate_label_map
 
 def darknet_2_csv(image_path, label_path, new_label_path):
     ## GET IMG SHAPE
@@ -16,10 +17,18 @@ def darknet_2_csv(image_path, label_path, new_label_path):
         f = open(label_path, "r")
         for line in f:
             label_data = line.split(' ')
-            filename = "." + image_path[20:]
+
+            ## BUG: filename not well constructed
+            s_path =image_path.split("/")
+            filename = "./" + s_path[-3] + "/" + s_path[-2] + "/" + s_path[-1]
+
             width = int(float(label_data[4][:-2]) * img_width)
             height = int(float(label_data[3]) * img_height)
-            class_cone = 0
+            ## CONVERT LABEL
+            ## TODO: load_label_maps from arg
+            data_label_map = "a"
+            your_label_map = "b"
+            class_cone = translate_label_map(your_label_map, data_label_map, label_data[0])
             xmax = int(float(label_data[1]) * img_width + width/2)
             xmin = int(float(label_data[1]) * img_width - width/2)
             ymax = int(float(label_data[2]) * img_height + height/2)

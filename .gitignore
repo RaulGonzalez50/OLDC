@@ -1,17 +1,5 @@
 # Don't track content of these folders
-p1/
-p1_l/
-p2/
-p2_l/
-p3/
-p3_l/
-p1 (copy)/
-p1_l (copy)/
-p2 (copy)/
-p2_l (copy)/
-p3 (copy)/
-p3_l (copy)/
-dataset_prova/
+
 
 ## Cache
 *.pyc
