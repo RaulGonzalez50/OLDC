@@ -18,8 +18,11 @@ def darknet_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_w
         for line in f:
             if line is '\n':
                 continue
-                
+
             label_data = line.split(' ')
+
+            if 'nan' in label_data:
+                continue
 
             s_path =image_path.split("/")
             filename = "./" + s_path[-3] + "/" + s_path[-2] + "/" + s_path[-1]
