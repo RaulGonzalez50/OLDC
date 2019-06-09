@@ -7,7 +7,7 @@ import glob
 
 ## SET DATASET'S FOLDER NAME
 PATH_TO_DST_DATASET_FOLDER = "../"
-DST_FOLDER_NAME = "dataset_prova"
+DST_FOLDER_NAME = "MERGED_MUNICH_DATASET"
 
 ## SET PERCENTAGE OF DATA USED FOR TEST AND VALIDATION
 VAL_PERCENTAGE = 0.1
@@ -15,8 +15,20 @@ TEST_PERCENTAGE = 0.1
 
 ## SET FOLDERS TO BE MERGED
 # END directories with '/'
-SRC_IMG_DIRS = ["../p4 (copy)/"] ## Source directory of the images
-SRC_LBLS_DIRS = ["../p4_l (copy)/"] ## Source directory of the labels
+SRC_IMG_DIRS = ["../../DATASET_TEAMS (copy)/amz/", "../../DATASET_TEAMS (copy)/bme/", "../../DATASET_TEAMS (copy)/dhbw/",
+"../../DATASET_TEAMS (copy)/DimitrisMartinArampatzis/", "../../DATASET_TEAMS (copy)/driverless_UPC/", "../../DATASET_TEAMS (copy)/elbflorace/",
+"../../DATASET_TEAMS (copy)/eufs/", "../../DATASET_TEAMS (copy)/fast-forest/", "../../DATASET_TEAMS (copy)/gfr/",
+"../../DATASET_TEAMS (copy)/high-octane/", "../../DATASET_TEAMS (copy)/itu/", "../../DATASET_TEAMS (copy)/kth/",
+"../../DATASET_TEAMS (copy)/tallinn/","../../DATASET_TEAMS (copy)/mms/", "../../DATASET_TEAMS (copy)/scut/", "../../DATASET_TEAMS (copy)/starkstrom/",
+"../../DATASET_TEAMS (copy)/unicamp/", "../../DATASET_TEAMS (copy)/vermilion/"] ## Source directory of the images
+
+SRC_LBLS_DIRS = ["../../DATASET_TEAMS (copy)/amz_labels/", "../../DATASET_TEAMS (copy)/bme_labels/", "../../DATASET_TEAMS (copy)/dhbw_labels/",
+"../../DATASET_TEAMS (copy)/DimitrisMartinArampatzis_labels/", "../../DATASET_TEAMS (copy)/driverless_UPC_labels/",
+"../../DATASET_TEAMS (copy)/elbflorace_labels/", "../../DATASET_TEAMS (copy)/eufs_labels/", "../../DATASET_TEAMS (copy)/fast-forest_labels/",
+"../../DATASET_TEAMS (copy)/gfr_labels/", "../../DATASET_TEAMS (copy)/high-octane_labels/", "../../DATASET_TEAMS (copy)/itu_labels/",
+"../../DATASET_TEAMS (copy)/kth_labels/", "../../DATASET_TEAMS (copy)/tallinn_labels/","../../DATASET_TEAMS (copy)/mms_labels/",
+"../../DATASET_TEAMS (copy)/scut_labels/", "../../DATASET_TEAMS (copy)/starkstrom_labels/", "../../DATASET_TEAMS (copy)/unicamp_labels/",
+"../../DATASET_TEAMS (copy)/vermilion_labels/"] ## Source directory of the labels
 
 ## SET NOMENCLATURE
 FILE_NAME = "frame" ## Generic name for the files
@@ -24,10 +36,10 @@ ZEROS = 8 ## Amount of zeros to fill the generic name: ex. ZEROS = 4 -> 0023
 
 ## SET KEY WORDS TO TRANSLATE LABELMAPS
 KEY_WORDS = [["yellow", "Yellow", "YELLOW"], ["blue", "Blue", "BLUE"],
-             ["orange", "Orange", "ORANGE"]]
+             ["orange", "Orange", "ORANGE", "red", "Red"]]
 
 ## SET REFERENCE LABEL MAP
-REF_LM = "../driverless_UPC_classes.txt"
+REF_LM = "reference_label_map.txt"
 
 ## ****************************************************************************************************************
 ## ****************************************************************************************************************
@@ -124,7 +136,6 @@ def main():
             ## CHOOSE RANDOM IMAGE
             img_file = random.choice(src_images)
             label_file = img_file[:-3]+labels_extension
-            print(label_file)
 
             ## REMOVE FILES FROM LISTS
             src_images.remove(img_file)
@@ -133,7 +144,7 @@ def main():
             ## NEW FILE NAMES
             img_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + IMG_EXTENSION
             label_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + LBS_EXTENSION
-            print(label_file_rename)
+
             ## SET NAMES
             old_file = os.path.join(SRC_DIR, img_file)
             new_file = os.path.join(DST_IMAGES_VAL, img_file_rename)

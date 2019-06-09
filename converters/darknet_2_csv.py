@@ -16,15 +16,17 @@ def darknet_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_w
 
         f = open(label_path, "r")
         for line in f:
+            if line is '\n':
+                continue
+                
             label_data = line.split(' ')
 
             s_path =image_path.split("/")
             filename = "./" + s_path[-3] + "/" + s_path[-2] + "/" + s_path[-1]
-
+            
             width = int(float(label_data[4][:-2]) * img_width)
             height = int(float(label_data[3]) * img_height)
-            
-            print(label_data[0])
+
             ## CONVERT LABEL
             class_cone = translate_label_map(ref_lm, lm_list, label_data[0], key_words)
 

@@ -22,7 +22,8 @@ def xml_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_words
 
         ## CONVERT LABEL
         class_cone = translate_label_map(ref_lm, lm_list, class_cone, key_words)
-
+        if class_cone is None:
+                continue
         ## GET BB PTS
         if(obj.find('bndbox') != None):
             xmlbox = obj.find('bndbox')
