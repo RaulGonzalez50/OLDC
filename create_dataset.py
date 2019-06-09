@@ -58,7 +58,7 @@ DST_LABELS_VAL = DST_LABELS + 'val/'
 DST_LABELS_TEST = DST_LABELS + 'test/'
 
 ## DEFINE EXTENSIONS
-LBS_EXTENSION = ".csv" ## Extension of the renamed lbls
+LBS_EXTENSION = "csv" ## Extension of the renamed lbls
 
 
 def main():
@@ -142,8 +142,8 @@ def main():
             src_labels.remove(label_file)
 
             ## NEW FILE NAMES
-            img_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + IMG_EXTENSION
-            label_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + LBS_EXTENSION
+            img_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + "." + IMG_EXTENSION
+            label_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + "." + LBS_EXTENSION
 
             ## SET NAMES
             old_file = os.path.join(SRC_DIR, img_file)
@@ -174,8 +174,8 @@ def main():
             src_labels.remove(label_file)
 
             ## NEW FILE NAMES
-            img_file_rename = FILE_NAME + str(count + num_test_files).zfill(ZEROS) + IMG_EXTENSION
-            label_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + LBS_EXTENSION
+            img_file_rename = FILE_NAME + str(count + num_test_files).zfill(ZEROS) + "." + IMG_EXTENSION
+            label_file_rename = FILE_NAME + str(count + num_val_files).zfill(ZEROS) + "." + LBS_EXTENSION
 
             ## SET NAMES
             old_file = os.path.join(SRC_DIR, img_file)
@@ -199,8 +199,8 @@ def main():
         for img_file in src_images:
 
             ## NEW FILE NAMES
-            img_file_rename = FILE_NAME + str(count + num_train_files).zfill(ZEROS) + IMG_EXTENSION
-            label_file_rename = FILE_NAME + str(count + num_train_files).zfill(ZEROS) + LBS_EXTENSION
+            img_file_rename = FILE_NAME + str(count + num_train_files).zfill(ZEROS) + "." + IMG_EXTENSION
+            label_file_rename = FILE_NAME + str(count + num_train_files).zfill(ZEROS) + "." + LBS_EXTENSION
 
             ## SET NAMES
             old_file = os.path.join(SRC_DIR, img_file)
