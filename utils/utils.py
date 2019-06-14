@@ -53,7 +53,7 @@ def translate_label_map(ref_lm, data_label_map, label, key_words):
                                         if index == 2:
                                                 if ("big" in lm_name or "Big" in lm_name or "BIG" in lm_name):
                                                         index += 1
-                                        return index
+                                        return ref_lm[index]
         else:
                 try:
                         lm_val = int(label)
