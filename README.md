@@ -29,6 +29,7 @@ This is the name you will give to the files of the merged dataset it has 2 compo
 Key Words are used to merge datasets which have different label map names to refer to the same objects. If no need of translating label maps is required, this field must be an empty array.
 
 **EXAMPLE**
+
 If translation is required:
 label map 1 : red-apple green-apple Dog Cat
 Our label map : apple dog cat
@@ -39,3 +40,17 @@ If there's no need to translate:
 ```
 KEY_WORDS = []
 ```
+
+#### Reference Label Map
+The reference label map is the label map used in the final dataset and to which all labels are going to be translated.
+Path can be edited but it is recomended to use the ones given in the folder **label_maps**
+
+#### Source Directories
+Source directories are lists which contain the paths to all folders that need to be merged.
+It is important that the first image source directory matches with the first label directory.
+IT IS IMPORTANT TO END THE PATH TO DIRECTORIES WITH "/"
+
+**EXAMPLE**
+
+#SRC_IMG_DIRS = ["./path/to/dataset1/images/", "./path/to/dataset2/images/"]
+#SRC_LBLS_DIRS = ["./path/to/dataset1/labels/", "./path/to/dataset2/labels/"]
