@@ -17,6 +17,7 @@ If you want to contribute please read the instructions in [Contribute.md]()
 ## Using OLDC
 ### Editing config file
 The config file contains all the parameters to modify the tool.
+
 #### Nomenclature
 This is the name you will give to the files of the merged dataset it has 2 components:
   - FILE_NAME : Name of the files
@@ -26,7 +27,9 @@ This is the name you will give to the files of the merged dataset it has 2 compo
   frame00000011
   ```
 #### Key Words
-Key Words are used to merge datasets which have different label map names to refer to the same objects. If no need of translating label maps is required, this field must be an empty array.
+Key Words are used to merge datasets which have different label map names to refer to the same objects. 
+
+If no need of translating label maps is required, this field must be an empty array.
 
 **EXAMPLE**
 
@@ -43,14 +46,30 @@ KEY_WORDS = []
 
 #### Reference Label Map
 The reference label map is the label map used in the final dataset and to which all labels are going to be translated.
+
 Path can be edited but it is recomended to use the ones given in the folder **label_maps**
 
 #### Source Directories
 Source directories are lists which contain the paths to all folders that need to be merged.
+
 It is important that the first image source directory matches with the first label directory.
+
 IT IS IMPORTANT TO END THE PATH TO DIRECTORIES WITH "/"
 
 **EXAMPLE**
 
 #SRC_IMG_DIRS = ["./path/to/dataset1/images/", "./path/to/dataset2/images/"]
+
 #SRC_LBLS_DIRS = ["./path/to/dataset1/labels/", "./path/to/dataset2/labels/"]
+
+### Creating your dataset
+Once you have set the config file as desired you can create your dataset runing the following command:
+```
+python create_dataset.py
+```
+
+## Check Dataset
+To check dataset is well merged, use the cheker.py script:
+```
+python checker.py
+```
