@@ -65,6 +65,7 @@ IT IS IMPORTANT TO END THE PATH TO DIRECTORIES WITH "/"
 #SRC_LBLS_DIRS = ["./path/to/dataset1/labels/", "./path/to/dataset2/labels/"]
 
 ### Creating your dataset
+#### Runing OLDC
 Once you have set the config file as desired you can create your dataset runing the following command:
 ```
 python create_dataset.py
