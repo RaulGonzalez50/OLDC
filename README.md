@@ -34,7 +34,9 @@ If no need of translating label maps is required, this field must be an empty ar
 **EXAMPLE**
 
 If translation is required:
+
 label map 1 : red-apple green-apple Dog Cat
+
 Our label map : apple dog cat
 ```
 KEY_WORDS = [["apple", "Apple"], ["Dog","dog"], ["Cat","cat"]]
