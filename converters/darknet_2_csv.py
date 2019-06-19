@@ -28,7 +28,7 @@ def darknet_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_w
             s_path =image_path.split("/")
             filename = "./" + s_path[-3] + "/" + s_path[-2] + "/" + s_path[-1]
             
-            if label_data[1]<1:
+            if float(label_data[1]) < 1.0000000:
                 width = int(float(label_data[3]) * img_width)
                 height = int(float(label_data[4][:-2]) * img_height)
 

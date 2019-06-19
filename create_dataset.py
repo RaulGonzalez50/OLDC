@@ -11,7 +11,7 @@ DST_FOLDER_NAME = "MERGED_MUNICH_DATASET"
 
 ## SET PERCENTAGE OF DATA USED FOR TEST AND VALIDATION
 VAL_PERCENTAGE = 0.1
-TEST_PERCENTAGE = 0.1
+TEST_PERCENTAGE = 0
 
 ## SET FOLDERS TO BE MERGED
 # END directories with '/'
@@ -30,25 +30,25 @@ TEST_PERCENTAGE = 0.1
 # "../../DATASET_TEAMS (copy)/scut_labels/", "../../DATASET_TEAMS (copy)/starkstrom_labels/", "../../DATASET_TEAMS (copy)/unicamp_labels/",
 # "../../DATASET_TEAMS (copy)/vermilion_labels/"] ## Source directory of the labels
 
-'''
-SRC_IMG_DIRS = ["../../DATASET_TEAMS (copy)/amz/", "../../DATASET_TEAMS (copy)/bme/",
-"../../DATASET_TEAMS (copy)/DimitrisMartinArampatzis/", "../../DATASET_TEAMS (copy)/elbflorace/",
-"../../DATASET_TEAMS (copy)/eufs/", "../../DATASET_TEAMS (copy)/fast-forest/",
-"../../DATASET_TEAMS (copy)/high-octane/", "../../DATASET_TEAMS (copy)/itu/", "../../DATASET_TEAMS (copy)/kth/",
-"../../DATASET_TEAMS (copy)/tallinn/","../../DATASET_TEAMS (copy)/mms/", "../../DATASET_TEAMS (copy)/scut/", "../../DATASET_TEAMS (copy)/starkstrom/",
-"../../DATASET_TEAMS (copy)/unicamp/", "../../DATASET_TEAMS (copy)/vermilion/"] ## Source directory of the images
 
-SRC_LBLS_DIRS = ["../../DATASET_TEAMS (copy)/amz_labels/", "../../DATASET_TEAMS (copy)/bme_labels/",
-"../../DATASET_TEAMS (copy)/DimitrisMartinArampatzis_labels/",
-"../../DATASET_TEAMS (copy)/elbflorace_labels/", "../../DATASET_TEAMS (copy)/eufs_labels/", "../../DATASET_TEAMS (copy)/fast-forest_labels/",
-"../../DATASET_TEAMS (copy)/high-octane_labels/", "../../DATASET_TEAMS (copy)/itu_labels/",
-"../../DATASET_TEAMS (copy)/kth_labels/", "../../DATASET_TEAMS (copy)/tallinn_labels/","../../DATASET_TEAMS (copy)/mms_labels/",
-"../../DATASET_TEAMS (copy)/scut_labels/", "../../DATASET_TEAMS (copy)/starkstrom_labels/", "../../DATASET_TEAMS (copy)/unicamp_labels/",
-"../../DATASET_TEAMS (copy)/vermilion_labels/"] ## Source directory of the labels
-'''
+SRC_IMG_DIRS = ["../DATASET_TEAMS (copy)/amz/", "../DATASET_TEAMS (copy)/bme/", "../DATASET_TEAMS (copy)/dhbw/", "../DATASET_TEAMS (copy)/dart/",
+"../DATASET_TEAMS (copy)/DimitrisMartinArampatzis/", "../DATASET_TEAMS (copy)/elbflorace/",
+"../DATASET_TEAMS (copy)/eufs/", "../DATASET_TEAMS (copy)/fast-forest/", "../DATASET_TEAMS (copy)/gfr/", "../DATASET_TEAMS (copy)/get/",
+"../DATASET_TEAMS (copy)/high-octane/", "../DATASET_TEAMS (copy)/itu/", "../DATASET_TEAMS (copy)/kth/",
+"../DATASET_TEAMS (copy)/tallinn/","../DATASET_TEAMS (copy)/mms/", "../DATASET_TEAMS (copy)/scut/", "../DATASET_TEAMS (copy)/starkstrom/",
+"../DATASET_TEAMS (copy)/unicamp/", "../DATASET_TEAMS (copy)/vermilion/"] ## Source directory of the images
 
-SRC_IMG_DIRS = ["../get/"]
-SRC_LBLS_DIRS = ["../get_labels/"]
+SRC_LBLS_DIRS = ["../DATASET_TEAMS (copy)/amz_labels/", "../DATASET_TEAMS (copy)/bme_labels/", "../DATASET_TEAMS (copy)/dhbw_labels/",
+"../DATASET_TEAMS (copy)/dart_labels/", "../DATASET_TEAMS (copy)/DimitrisMartinArampatzis_labels/", 
+"../DATASET_TEAMS (copy)/elbflorace_labels/", "../DATASET_TEAMS (copy)/eufs_labels/", "../DATASET_TEAMS (copy)/fast-forest_labels/",
+"../DATASET_TEAMS (copy)/gfr_labels/", "../DATASET_TEAMS (copy)/get_labels/",  "../DATASET_TEAMS (copy)/high-octane_labels/", 
+"../DATASET_TEAMS (copy)/itu_labels/", "../DATASET_TEAMS (copy)/kth_labels/", "../DATASET_TEAMS (copy)/tallinn_labels/",
+"../DATASET_TEAMS (copy)/mms_labels/", "../DATASET_TEAMS (copy)/scut_labels/", "../DATASET_TEAMS (copy)/starkstrom_labels/",
+"../DATASET_TEAMS (copy)/unicamp_labels/", "../DATASET_TEAMS (copy)/vermilion_labels/"] ## Source directory of the labels
+
+
+#SRC_IMG_DIRS = ["../get/"]
+#SRC_LBLS_DIRS = ["../get_labels/"]
 
 
 ## SET NOMENCLATURE
