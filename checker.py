@@ -36,7 +36,7 @@ def main():
           for row in reader:
               print(labels_color[lm.index(str(row['class']))])
               cv2.rectangle(img, (int(row['xmin']), int(row['ymin'])), (int(row['xmax']), int(row['ymax'])), labels_color[lm.index(str(row['class']))], 2)
-              cv2.putText(img,str(row['class']),(int(row['xmax'])+10,int(row['ymax'])), 0, 0.3, labels_color[lm.index(str(row['class']))])
+              cv2.putText(img,str(row['class']),(int(row['xmax'])+5,int(row['ymax'])), 0, 0.3, labels_color[lm.index(str(row['class']))])
           
         cv2.imshow("CHECK", img)
         cv2.waitKey(0)

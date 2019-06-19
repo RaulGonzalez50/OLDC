@@ -47,8 +47,8 @@ SRC_LBLS_DIRS = ["../../DATASET_TEAMS (copy)/amz_labels/", "../../DATASET_TEAMS 
 "../../DATASET_TEAMS (copy)/vermilion_labels/"] ## Source directory of the labels
 '''
 
-SRC_IMG_DIRS = ["../dart/"]
-SRC_LBLS_DIRS = ["../dart_labels/"]
+SRC_IMG_DIRS = ["../get/"]
+SRC_LBLS_DIRS = ["../get_labels/"]
 
 
 ## SET NOMENCLATURE
