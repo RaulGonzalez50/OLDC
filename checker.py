@@ -8,9 +8,11 @@ dataset_name = "MERGED_MUNICH_DATASET"
 
 def main():
   lm = load_label_map("reference_label_map.txt")
+  print(lm)
   labels_color = []
   for _ in lm:
      labels_color.append(list(np.random.choice(range(256), size=3)))
+  print(labels_color)
   while 1:
     txt = input("\nq to exit otherwhise path\n")
     if txt == 'q' or txt == 'Q':
@@ -32,8 +34,9 @@ def main():
         with open(label_path, 'r') as csvfile:
           reader = csv.DictReader(csvfile)
           for row in reader:
-              cv2.rectangle(img, (int(row['xmin']), int(row['ymin'])), (int(row['xmax']), int(row['ymax'])), labels_color[lm.index(str(row['class'], 2))])
-              cv2.putText(img,str(row['class']),int(row['xmax'])+10,int(row['ymax']),0,0.3,labels_color[lm.index(str(row['class']))])
+              print(labels_color[lm.index(str(row['class']))])
+              cv2.rectangle(img, (int(row['xmin']), int(row['ymin'])), (int(row['xmax']), int(row['ymax'])), labels_color[lm.index(str(row['class']))], 2)
+              cv2.putText(img,str(row['class']),(int(row['xmax'])+10,int(row['ymax'])), 0, 0.3, labels_color[lm.index(str(row['class']))])
           
         cv2.imshow("CHECK", img)
         cv2.waitKey(0)
