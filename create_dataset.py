@@ -30,7 +30,7 @@ TEST_PERCENTAGE = 0.1
 # "../../DATASET_TEAMS (copy)/scut_labels/", "../../DATASET_TEAMS (copy)/starkstrom_labels/", "../../DATASET_TEAMS (copy)/unicamp_labels/",
 # "../../DATASET_TEAMS (copy)/vermilion_labels/"] ## Source directory of the labels
 
-
+'''
 SRC_IMG_DIRS = ["../../DATASET_TEAMS (copy)/amz/", "../../DATASET_TEAMS (copy)/bme/",
 "../../DATASET_TEAMS (copy)/DimitrisMartinArampatzis/", "../../DATASET_TEAMS (copy)/elbflorace/",
 "../../DATASET_TEAMS (copy)/eufs/", "../../DATASET_TEAMS (copy)/fast-forest/",
@@ -45,10 +45,10 @@ SRC_LBLS_DIRS = ["../../DATASET_TEAMS (copy)/amz_labels/", "../../DATASET_TEAMS 
 "../../DATASET_TEAMS (copy)/kth_labels/", "../../DATASET_TEAMS (copy)/tallinn_labels/","../../DATASET_TEAMS (copy)/mms_labels/",
 "../../DATASET_TEAMS (copy)/scut_labels/", "../../DATASET_TEAMS (copy)/starkstrom_labels/", "../../DATASET_TEAMS (copy)/unicamp_labels/",
 "../../DATASET_TEAMS (copy)/vermilion_labels/"] ## Source directory of the labels
- 
+'''
 
-#SRC_IMG_DIRS = ["../../DATASET_TEAMS (copy)/bme/"]
-#SRC_LBLS_DIRS = ["../../DATASET_TEAMS (copy)/bme_labels/"]
+SRC_IMG_DIRS = ["../dart/"]
+SRC_LBLS_DIRS = ["../dart_labels/"]
 
 
 ## SET NOMENCLATURE

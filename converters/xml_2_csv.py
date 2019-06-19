@@ -34,15 +34,22 @@ def xml_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_words
 
         elif(obj.find('polygon') != None):
             xmlbox = obj.find('polygon')
-            x_list = [ float(xmlbox.find(x).text) for x in ['x1','x2','x3','x4'] ]
-            y_list = [ float(xmlbox.find(y).text) for y in ['y1','y2','y3','y4'] ]
+            if xmlbox.find("x1") is not None:
+                x_list = [ float(xmlbox.find(x).text) for x in ['x1','x2','x3','x4'] ]
+                y_list = [ float(xmlbox.find(y).text) for y in ['y1','y2','y3','y4'] ]
+
+            else:
+                x_list = []
+                y_list = []
+                for pt in xmlbox.findall('pt'):
+                    x_list.append(pt.find('x').text)
+                    y_list.append(pt.find('y').text)
 
             xmin = int(min(x_list))
             xmax = int(max(x_list))
             ymin = int(min(y_list))
             ymax = int(max(y_list))
-
-        
+            
         writer.writerow({'filename': filename, 'width': xmax-xmin,
             'height': ymax-ymin, 'class': class_cone , 'xmax': xmax,
             'xmin': xmin, 'ymax': ymax, 'ymin':ymin})
