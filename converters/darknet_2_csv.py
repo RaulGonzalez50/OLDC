@@ -49,7 +49,7 @@ def darknet_2_csv(image_path, label_path, new_label_path, ref_lm, lm_list, key_w
                 if class_cone is None:
                     continue
 
-                xmax = int(float(label_data[1]) 
+                xmax = int(float(label_data[1])) 
                 xmin = int(float(label_data[3]))
                 ymax = int(float(label_data[2]))
                 ymin = int(float(label_data[4]))
