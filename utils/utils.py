@@ -31,7 +31,11 @@ def load_label_map(label_map_path):
         if "txt" in label_map_path.split(".")[-1]:
                 f = open(label_map_path, "r")
                 for line in f:
-                        label_map_list.append(line[:-1])
+                        if "\n" in line:
+                                label_map_list.append(line[:-1])
+                        else:
+                                label_map_list.append(line)
+
                 return label_map_list
         else:
                 ## TODO: Implement .pbtxt coversion

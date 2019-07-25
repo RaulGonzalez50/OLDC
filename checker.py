@@ -38,6 +38,8 @@ def main():
               cv2.rectangle(img, (int(row['xmin']), int(row['ymin'])), (int(row['xmax']), int(row['ymax'])), labels_color[lm.index(str(row['class']))], 2)
               cv2.putText(img,str(row['class']),(int(row['xmax'])+5,int(row['ymax'])), 0, 0.3, labels_color[lm.index(str(row['class']))])
           
+        cv2.namedWindow('CHECK',cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('CHECK', 1000,1000)
         cv2.imshow("CHECK", img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
